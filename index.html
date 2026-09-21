@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wei-Ping Li | Ping L AI Lab</title>
+
+  <meta name="description"
+        content="Wei-Ping Li — Critical Care, Aeromedical Evacuation, Biomedical Informatics and Clinical Artificial Intelligence.">
+
+  <style>
+    :root {
+      /* Water */
+      --navy: #0F2747;
+      --ocean: #1E4E79;
+      --steel-blue: #5C7C96;
+      --cyan: #3D7EA6;
+      --ice: #DCEAF2;
+
+      /* Metal */
+      --silver: #B8C1C8;
+      --platinum: #E5E4E2;
+      --titanium: #6F7C85;
+      --gunmetal: #2F3E46;
+
+      /* Neutral */
+      --soft-white: #F7FAFC;
+      --white: #FFFFFF;
+
+      /* Prestige */
+      --gold: #C9A86A;
+      --pale-gold: #D6C28A;
+
+      --text: #243746;
+      --muted: #647684;
+      --border: rgba(111, 124, 133, 0.22);
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        "Segoe UI",
+        "Noto Sans TC",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        Arial,
+        sans-serif;
+      background: var(--soft-white);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* =========================
+       Navigation
+    ========================== */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background:
+        rgba(15, 39, 71, 0.96);
+
+      border-bottom: 1px solid rgba(184, 193, 200, 0.22);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      min-height: 72px;
+      padding: 0 28px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--silver);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--platinum);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .lang-button {
+      border: 1px solid var(--silver);
+      background: transparent;
+      color: white;
+
+      padding: 7px 13px;
+      border-radius: 5px;
+
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: 0.2s ease;
+    }
+
+    .lang-button:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: white;
+    }
+
+    /* =========================
+       Hero
+    ========================== */
+
+    .hero {
+      min-height: 78vh;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(61, 126, 166, 0.25),
+          transparent 36%
+        ),
+        linear-gradient(
+          135deg,
+          #0F2747 0%,
+          #173C63 58%,
+          #1E4E79 100%
+        );
+
+      color: white;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(184,193,200,0.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(184,193,200,0.035) 1px,
+          transparent 1px
+        );
+
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: var(--max-width);
+
+      margin: auto;
+      padding: 110px 28px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--silver);
+
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .gold-line {
+      width: 50px;
+      height: 2px;
+
+      background: var(--gold);
+
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.7rem);
+      line-height: 1.03;
+
+      margin: 0 0 24px;
+
+      font-weight: 680;
+      letter-spacing: -0.04em;
+    }
+
+    .credentials {
+      color: var(--platinum);
+
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      margin-bottom: 8px;
+    }
+
+    .identity {
+      color: #C7D6E1;
+
+      max-width: 760px;
+      font-size: 1.03rem;
+    }
+
+    .statement {
+      max-width: 840px;
+
+      margin-top: 38px;
+
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      line-height: 1.45;
+      font-weight: 300;
+
+      color: white;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 12px 20px;
+
+      text-decoration: none;
+      border-radius: 6px;
+
+      font-size: 0.92rem;
+      font-weight: 600;
+
+      transition: all 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--cyan);
+      color: white;
+
+      border: 1px solid var(--cyan);
+    }
+
+    .button-primary:hover {
+      background: #498AAF;
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--silver);
+      color: white;
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* =========================
+       Generic layout
+    ========================== */
+
+    .section {
+      padding: 95px 28px;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: auto;
+    }
+
+    .section-alt {
+      background: #EEF5F8;
+    }
+
+    .section-dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .section-label {
+      color: var(--ocean);
+      font-size: 0.75rem;
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+
+      font-weight: 700;
+    }
+
+    .section-dark .section-label {
+      color: var(--silver);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+
+      margin: 12px 0 18px;
+
+      color: var(--navy);
+      letter-spacing: -0.025em;
+    }
+
+    .section-dark h2 {
+      color: white;
+    }
+
+    .intro {
+      max-width: 790px;
+
+      color: var(--muted);
+      font-size: 1.05rem;
+
+      margin-bottom: 45px;
+    }
+
+    .section-dark .intro {
+      color: #CBD8E1;
+    }
+
+    /* =========================
+       About
+    ========================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .profile-panel {
+      border-left: 2px solid var(--silver);
+      padding-left: 28px;
+    }
+
+    .profile-item {
+      margin-bottom: 22px;
+    }
+
+    .profile-item small {
+      display: block;
+
+      color: var(--titanium);
+
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+
+      margin-bottom: 3px;
+    }
+
+    .profile-item strong {
+      color: var(--navy);
+      font-size: 0.98rem;
+    }
+
+    /* =========================
+       Research
+    ========================== */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .research-card {
+      background: white;
+
+      padding: 28px;
+
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--silver);
+
+      border-radius: 7px;
+
+      transition: 0.25s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-3px);
+
+      border-top-color: var(--cyan);
+
+      box-shadow:
+        0 12px 30px rgba(15,39,71,0.07);
+    }
+
+    .research-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+
+      font-size: 1.08rem;
+    }
+
+    .research-card p {
+      margin: 0;
+      color: var(--muted);
+
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       Publications
+    ========================== */
+
+    .publication {
+      padding: 24px 0;
+
+      border-bottom:
+        1px solid rgba(184,193,200,0.5);
+    }
+
+    .publication:first-child {
+      border-top:
+        1px solid rgba(184,193,200,0.5);
+    }
+
+    .publication-year {
+      display: inline-block;
+
+      min-width: 65px;
+
+      color: var(--ocean);
+
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .publication-title {
+      font-weight: 650;
+      color: var(--navy);
+    }
+
+    .publication-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+
+      margin-top: 5px;
+    }
+
+    /* =========================
+       Timeline
+    ========================== */
+
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: "";
+
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      left: 5px;
+
+      width: 1px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          var(--silver),
+          var(--steel-blue)
+        );
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item::before {
+      content: "";
+
+      position: absolute;
+      left: -31px;
+      top: 8px;
+
+      width: 9px;
+      height: 9px;
+
+      background: var(--ocean);
+      border: 3px solid var(--ice);
+
+      border-radius: 50%;
+    }
+
+    .timeline-year {
+      color: var(--steel-blue);
+
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .timeline-title {
+      color: var(--navy);
+
+      font-weight: 650;
+
+      margin-top: 3px;
+    }
+
+    .timeline-text {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       Contact
+    ========================== */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+
+      gap: 80px;
+    }
+
+    .contact-links a {
+      display: block;
+
+      padding: 12px 0;
+
+      color: var(--platinum);
+      text-decoration: none;
+
+      border-bottom:
+        1px solid rgba(184,193,200,0.2);
+    }
+
+    .contact-links a:hover {
+      color: white;
+    }
+
+    /* =========================
+       Footer
+    ========================== */
+
+    footer {
+      background: var(--gunmetal);
+
+      color: var(--silver);
+
+      text-align: center;
+
+      padding: 28px;
+
+      font-size: 0.82rem;
+    }
+
+    /* Language */
+
+    [data-lang="zh"] {
+      display: none;
+    }
+
+    body.zh [data-lang="en"] {
+      display: none;
+    }
+
+    body.zh [data-lang="zh"] {
+      display: initial;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        padding: 14px 20px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        display: none;
+      }
+
+      .hero-inner {
+        padding: 85px 22px;
+      }
+
+      .section {
+        padding: 70px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar">
+  <div class="nav-inner">
+
+    <a class="brand" href="#home">
+      PING L <span>AI LAB</span>
+    </a>
+
+    <div class="nav-links">
+
+      <a href="#home">
+        <span data-lang="en">Home</span>
+        <span data-lang="zh">首頁</span>
+      </a>
+
+      <a href="#about">
+        <span data-lang="en">About</span>
+        <span data-lang="zh">關於我</span>
+      </a>
+
+      <a href="#research">
+        <span data-lang="en">Research</span>
+        <span data-lang="zh">研究</span>
+      </a>
+
+      <a href="#publications">
+        <span data-lang="en">Publications</span>
+        <span data-lang="zh">著作</span>
+      </a>
+
+      <a href="#experience">
+        <span data-lang="en">Experience</span>
+        <span data-lang="zh">經歷</span>
+      </a>
+
+      <a href="#contact">
+        <span data-lang="en">Contact</span>
+        <span data-lang="zh">聯絡</span>
+      </a>
+
+      <button
+        class="lang-button"
+        onclick="toggleLanguage()"
+        id="langButton">
+        中文
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero -->
+
+<header class="hero" id="home">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      Ping L AI Lab · Academic Portfolio
+    </div>
+
+    <div class="gold-line"></div>
+
+    <h1>Wei-Ping Li</h1>
+
+    <div class="credentials">
+
+      <span data-lang="en">
+        RN · CCRN · CFRN · MS · PhD Student
+      </span>
+
+      <span data-lang="zh">
+        護理師 · 重症專業 · 航空護理 · 碩士 · 博士生
+      </span>
+
+    </div>
+
+    <p class="identity">
+
+      <span data-lang="en">
+        Critical Care Nurse Officer · Aeromedical Evacuation Nurse ·
+        Biomedical Informatics PhD Student
+      </span>
+
+      <span data-lang="zh">
+        重症護理官 · 航空護理官 · 生物醫學資訊博士生
+      </span>
+
+    </p>
+
+    <div class="statement">
+
+      <span data-lang="en">
+        Research at the intersection of critical care,
+        clinical practice, and artificial intelligence.
+      </span>
+
+      <span data-lang="zh">
+        探索重症醫療、臨床實務與人工智慧交會之處。
+      </span>
+
+    </div>
+
+    <div class="hero-buttons">
+
+      <a href="#research" class="button button-primary">
+        <span data-lang="en">View Research</span>
+        <span data-lang="zh">研究領域</span>
+      </a>
+
+      <a href="#publications" class="button button-secondary">
+        <span data-lang="en">Publications</span>
+        <span data-lang="zh">學術著作</span>
+      </a>
+
+      <a href="#contact" class="button button-secondary">
+        <span data-lang="en">Contact</span>
+        <span data-lang="zh">聯絡方式</span>
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+
+<!-- About -->
+
+<section class="section" id="about">
+
+  <div class="section-inner">
+
+    <div class="section-label">
+      01 / Profile
+    </div>
+
+    <h2>
+      <span data-lang="en">About</span>
+      <span data-lang="zh">關於我</span>
+    </h2>
+
+    <div class="about-grid">
+
+      <div>
+
+        <p>
+          <span data-lang="en">
+            Wei-Ping Li is a clinician-researcher whose professional
+            interests connect critical care nursing, aeromedical
+            evacuation, military medicine, biomedical informatics,
+            and clinical artificial intelligence.
+          </span>
+
+          <span data-lang="zh">
+            李偉平為臨床護理與生物醫學資訊領域研究者，
+            專業與研究興趣橫跨重症護理、航空後送、
+            軍事醫療、生物醫學資訊與臨床人工智慧。
+          </span>
+        </p>
+
+        <p>
+          <span data-lang="en">
+            His research focuses on translating clinical data into
+            interpretable and clinically useful decision-support tools,
+            with particular interests in predictive modeling,
+            survival analysis, machine learning, and critical care analytics.
+          </span>
+
+          <span data-lang="zh">
+            研究重點聚焦於如何將臨床資料轉化為具有可解釋性、
+            且能實際支援臨床決策的工具，涵蓋預測模型、
+            生存分析、機器學習及重症資料分析。
+          </span>
+        </p>
+
+      </div>
+
+      <div class="profile-panel">
+
+        <div class="profile-item">
+          <small>
+            <span data-lang="en">Current Training</span>
+            <span data-lang="zh">目前進修</span>
+          </small>
+
+          <strong>
+            National Yang Ming Chiao Tung University
+            <br>
+            Institute of Biomedical Informatics
+          </strong>
+        </div>
+
+        <div class="profile-item">
+          <small>
+            <span data-lang="en">Clinical Field</span>
+            <span data-lang="zh">臨床領域</span>
+          </small>
+
+          <strong>
+            Critical Care · CCU · Cardiovascular Surgical ICU
+          </strong>
+        </div>
+
+        <div class="profile-item">
+          <small>
+            <span data-lang="en">Research Focus</span>
+            <span data-lang="zh">研究重點</span>
+          </small>
+
+          <strong>
+            Clinical AI · Predictive Modeling · Survival Analysis
+          </strong>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Research -->
+
+<section class="section section-alt" id="research">
+
+  <div class="section-inner">
+
+    <div class="section-label">
+      02 / Research
+    </div>
+
+    <h2>
+      <span data-lang="en">Research Interests</span>
+      <span data-lang="zh">研究領域</span>
+    </h2>
+
+    <p class="intro">
+
+      <span data-lang="en">
+        Research connecting bedside clinical practice with
+        biomedical data science and artificial intelligence.
+      </span>
+
+      <span data-lang="zh">
+        將床邊臨床實務、生物醫學資料科學與人工智慧相互連結。
+      </span>
+
+    </p>
+
+    <div class="research-grid">
+
+      <div class="research-card">
+        <h3>Critical Care</h3>
+        <p>
+          ICU deterioration, clinical instability,
+          cardiovascular critical care and decision support.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <h3>Clinical Artificial Intelligence</h3>
+        <p>
+          Machine learning and explainable AI
+          for clinically meaningful prediction.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <h3>Biomedical Informatics</h3>
+        <p>
+          Clinical data integration, modeling,
+          validation and translational informatics.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <h3>Survival Analysis</h3>
+        <p>
+          Cox models, machine-learning survival models
+          and time-to-event prediction.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <h3>Aeromedical Evacuation</h3>
+        <p>
+          Patient severity, transport risk,
+          operational readiness and flight nursing.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <h3>Military Medicine</h3>
+        <p>
+          Critical care readiness,
+          disaster medicine and operational healthcare.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- Publications -->
+
+<section class="section" id="publications">
+
+  <div class="section-inner">
+
+    <div class="section-label">
+      03 / Scholarship
+    </div>
+
+    <h2>
+      <span data-lang="en">Selected Publications & Projects</span>
+      <span data-lang="zh">學術著作與研究計畫</span>
+    </h2>
+
+    <p class="intro">
+      <span data-lang="en">
+        Selected academic work in clinical AI,
+        critical care and biomedical research.
+      </span>
+
+      <span data-lang="zh">
+        臨床人工智慧、重症醫療與生物醫學研究之代表性學術成果。
+      </span>
+    </p>
+
+    <div>
+
+      <div class="publication">
+        <span class="publication-year">2026</span>
+
+        <span class="publication-title">
+          Clinical Artificial Intelligence and Trustworthy
+          Predictive Modeling
+        </span>
+
+        <div class="publication-meta">
+          Selected academic work · Details forthcoming
+        </div>
+      </div>
+
+      <div class="publication">
+        <span class="publication-year">2026</span>
+
+        <span class="publication-title">
+          Critical Care Risk Prediction and Survival Modeling
+        </span>
+
+        <div class="publication-meta">
+          Biomedical Informatics Research
+        </div>
+      </div>
+
+      <div class="publication">
+        <span class="publication-year">2025</span>
+
+        <span class="publication-title">
+          Aeromedical Evacuation and Patient Severity Research
+        </span>
+
+        <div class="publication-meta">
+          Military and Aeromedical Medicine
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Experience -->
+
+<section class="section section-alt" id="experience">
+
+  <div class="section-inner">
+
+    <div class="section-label">
+      04 / Experience
+    </div>
+
+    <h2>
+      <span data-lang="en">Clinical & Academic Experience</span>
+      <span data-lang="zh">臨床與學術經歷</span>
+    </h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          CURRENT
+        </div>
+
+        <div class="timeline-title">
+          PhD Student — Biomedical Informatics
+        </div>
+
+        <div class="timeline-text">
+          National Yang Ming Chiao Tung University
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          CLINICAL
+        </div>
+
+        <div class="timeline-title">
+          Critical Care Nursing
+        </div>
+
+        <div class="timeline-text">
+          CCU · Cardiovascular Surgical ICU ·
+          Emergency and Critical Care
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          AEROMEDICAL
+        </div>
+
+        <div class="timeline-title">
+          Aeromedical Evacuation Nursing
+        </div>
+
+        <div class="timeline-text">
+          Critical patient transport,
+          flight nursing and operational medicine
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact -->
+
+<section class="section section-dark" id="contact">
+
+  <div class="section-inner">
+
+    <div class="contact-grid">
+
+      <div>
+
+        <div class="section-label">
+          05 / Contact
+        </div>
+
+        <h2>
+          <span data-lang="en">Academic Contact</span>
+          <span data-lang="zh">學術聯絡</span>
+        </h2>
+
+        <p class="intro">
+
+          <span data-lang="en">
+            For academic collaboration, research discussion,
+            and professional communication.
+          </span>
+
+          <span data-lang="zh">
+            歡迎學術合作、研究交流與專業聯繫。
+          </span>
+
+        </p>
+
+      </div>
+
+      <div class="contact-links">
+
+        <a href="#">
+          Email
+        </a>
+
+        <a href="#">
+          ORCID
+        </a>
+
+        <a href="#">
+          Google Scholar
+        </a>
+
+        <a href="#">
+          LinkedIn
+        </a>
+
+        <a href="#">
+          Curriculum Vitae
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<footer>
+  © 2026 Wei-Ping Li · Ping L AI Lab · All Rights Reserved
+</footer>
+
+
+<script>
+
+  function toggleLanguage() {
+
+    const body = document.body;
+    const button = document.getElementById("langButton");
+
+    body.classList.toggle("zh");
+
+    if (body.classList.contains("zh")) {
+      button.textContent = "EN";
+      document.documentElement.lang = "zh-Hant";
+    } else {
+      button.textContent = "中文";
+      document.documentElement.lang = "en";
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
